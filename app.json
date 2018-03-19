@@ -1,0 +1,17 @@
+{
+  "name": "vretencarji",
+  "stack": "heroku-16",
+  "description": "app za ucenje vretencarjev",
+  "keywords": [
+    "r",
+    "shiny"
+  ],
+  "repository": "https://github.com/HudoGriz/vretencarji",
+  "logo": "https://github.com/virtualstaticvoid/heroku-shiny-app/raw/master/logo.png",
+  "success_url": "/",
+  "buildpacks": [
+    {
+      "url": "https://github.com/virtualstaticvoid/heroku-buildpack-r.git#heroku-16"
+    }
+  ]
+}
