@@ -20,7 +20,7 @@ fluidPage(
   actionButton("do", "Prekontroliraj"),
   
     #Error
-  h3(textOutput("error")),
+  h3(textOutput("error"))
   
   #verbatimTextOutput("ID") # za debuging
 )
