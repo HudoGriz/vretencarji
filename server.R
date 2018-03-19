@@ -3,14 +3,15 @@ library(png)
 library(pracma)
   id <- 1#začetna vrednost ID-ja
   
-    #preberi data
-  data <- read_excel("Tabela/data.xlsx")
-  data$fam <- as.character(data$fam)
-  row <- as.vector(data[id,])  #naredi vektor row z samo to vrstico določenega ID-ja
+  
   
 server <- function(input, output, session) {
 
-  
+
+  #preberi data
+  data <- read_excel("Tabela/data.xlsx")
+  data$fam <- as.character(data$fam)
+  row <- as.vector(data[id,])  #naredi vektor row z samo to vrstico določenega ID-ja
   #output$ID <- renderText(row$fam) debug
   
   #output$stat <- renderText(strcmp("captionF",row$fam)) debug
@@ -27,6 +28,8 @@ server <- function(input, output, session) {
                   #se ponovi ob vsakem pravilnem vnosu    
                   #izberi vrstico
                       id <<- id + 1
+                      
+                      if (id>105){id <<- 1}
                       
                    # output$ID <- renderText(data$species)  debug
     
