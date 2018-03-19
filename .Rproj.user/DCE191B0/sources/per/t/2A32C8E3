@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521389458263.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2233895370",
+    "id" : "2A32C8E3",
+    "lastKnownWriteTime" : 1521468375,
+    "last_content_update" : 1521468375714,
+    "path" : "C:/Users/blazv/Desktop/vertebrate/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "cursorPosition" : "24,3",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

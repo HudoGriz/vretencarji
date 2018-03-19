@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1521390081429.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1231065084",
+    "id" : "CA4E0E66",
+    "lastKnownWriteTime" : 1521468113,
+    "last_content_update" : 1521468113142,
+    "path" : "C:/Users/blazv/Desktop/vertebrate/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "28,35",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
