@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1231065084",
+    "hash" : "0",
     "id" : "CA4E0E66",
     "lastKnownWriteTime" : 1521472764,
     "last_content_update" : 1521472764179,
     "path" : "C:/Users/blazv/Desktop/vertebrate/server.R",
     "project_path" : "server.R",
     "properties" : {
-        "cursorPosition" : "21,2",
-        "scrollLine" : "8"
+        "cursorPosition" : "1,12",
+        "scrollLine" : "0"
     },
     "relative_order" : 2,
     "source_on_save" : false,
