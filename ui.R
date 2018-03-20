@@ -15,7 +15,7 @@ fluidPage(
   textInput("captionI", "Ime"),
   verbatimTextOutput("valueI"),  # za debuging
   
-  tableOutput("stat"), # za debuging
+  #tableOutput("stat"), # za debuging
     #gumb
   actionButton("do", "Prekontroliraj"),
   textOutput("navodila"),

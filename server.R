@@ -21,7 +21,7 @@ server <- function(input, output, session) {
     ker <- input$select
     data2    <<- data[data$kdo %in% ker,]
   
-    output$stat <- renderTable(data2)
+    #output$stat <- renderTable(data2)
     })
   
   
@@ -89,7 +89,7 @@ server <- function(input, output, session) {
         }
   
   }else{
-      output$error <- renderText("LUZER, NAPACEN ROD!!!")
+      output$error <- renderText("LUZER, NAPACNA DRUZINA!!!")
       output$valueF <- renderText(row$fam)
      
     }
