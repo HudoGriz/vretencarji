@@ -1,20 +1,36 @@
 library(readxl)
 library(png)
 library(pracma)
-  id <- 1#začetna vrednost ID-ja
+
   
-  
-  
+  data <- read_excel("Tabela/data.xlsx")
+  id <- floor(runif(1, min=0, max=nrow(data)))#začetna vrednost ID-ja
 server <- function(input, output, session) {
 
-
+  data2 <- data
+  
   #preberi data
-  data <- read_excel("Tabela/data.xlsx")
+  data$kdo <- as.character(data$kdo)
   data$fam <- as.character(data$fam)
-  row <- as.vector(data[id,])  #naredi vektor row z samo to vrstico določenega ID-ja
+  row <- as.vector(data2[id,])  #naredi vektor row z samo to vrstico določenega ID-ja
   #output$ID <- renderText(row$fam) debug
   
-  #output$stat <- renderText(strcmp("captionF",row$fam)) debug
+  #poaži določene žvadi
+  
+  observeEvent(input$select,{
+    ker <- input$select
+    data2    <<- data[data$kdo %in% ker,]
+  
+    output$stat <- renderTable(data2)
+    })
+  
+  
+  
+  
+  
+  
+  
+  
   output$ID <- renderText(id)
   
   observeEvent(input$do, {   #se zažene ob vsakem pritisku knofa PREKONTROLIRAJ
@@ -27,13 +43,19 @@ server <- function(input, output, session) {
             
                   #se ponovi ob vsakem pravilnem vnosu    
                   #izberi vrstico
+                      
+                    if(strcmp(input$roc, "norm")){
                       id <<- id + 1
                       
-                      if (id>105){id <<- 1}
+                      if (id>nrow(data2)){id <<- 1}}else{
+                        
+                        id <<- floor(runif(1, min=1, max=nrow(data2)))
+                      }
+            
                       
                    # output$ID <- renderText(data$species)  debug
     
-                      row <<- as.vector(data[id,]) 
+                      row <<- as.vector(data2[id,]) 
                       output$stat <- renderTable(row)
                   #slika
                       slika <- as.character(row$slika)
@@ -57,17 +79,17 @@ server <- function(input, output, session) {
 
                           
           }else{
-            output$error <- renderText("LUZER, NAPAČNO SLOVENSKO IME!!!")
+            output$error <- renderText("LUZER, NAPACNO SLOVENSKO IME!!!")
             output$valueI <- renderText(row$ime)
           }
       
         }else{
-          output$error <- renderText("LUZER, NAPAČNA VRSTA!!!")
+          output$error <- renderText("LUZER, NAPACNA VRSTA!!!")
           output$valueS <- renderText(row$species)
         }
   
   }else{
-      output$error <- renderText("LUZER, NAPAČEN ROD!!!")
+      output$error <- renderText("LUZER, NAPACEN ROD!!!")
       output$valueF <- renderText(row$fam)
      
     }
@@ -86,6 +108,8 @@ server <- function(input, output, session) {
       ))
 
   },deleteFile = FALSE)
+  
+  output$navodila <- renderText("Navodila: pisi vse z malimi, ne pisi sumnikov, pa nebi smelo bit komplikacij")
 
 
   
