@@ -3,34 +3,30 @@ library(png)
 library(pracma)
 
   
-  data <- read_excel("Tabela/data.xlsx")
-  id <- floor(runif(1, min=0, max=nrow(data)))#začetna vrednost ID-ja
-server <- function(input, output, session) {
-
-  data2 <- data
   
+  
+server <- function(input, output, session) {
+  data <- read_excel("Tabela/data.xlsx")
+  data2 <- data
+  id <- floor(runif(1, min=0, max=nrow(data)))#začetna vrednost ID-ja
   #preberi data
   data$kdo <- as.character(data$kdo)
   data$fam <- as.character(data$fam)
   row <- as.vector(data2[id,])  #naredi vektor row z samo to vrstico določenega ID-ja
   #output$ID <- renderText(row$fam) debug
   
+  autoInvalidate <- reactiveTimer(25000)
+  
   #poaži določene žvadi
   
   observeEvent(input$select,{
     ker <- input$select
     data2    <<- data[data$kdo %in% ker,]
+    autoInvalidate()
   
     #output$stat <- renderTable(data2)
     })
-  
-  
-  
-  
-  
-  
-  
-  
+
   output$ID <- renderText(id)
   
   observeEvent(input$do, {   #se zažene ob vsakem pritisku knofa PREKONTROLIRAJ
