@@ -14,15 +14,13 @@ server <- function(input, output, session) {
   data$fam <- as.character(data$fam)
   row <- as.vector(data2[id,])  #naredi vektor row z samo to vrstico določenega ID-ja
   #output$ID <- renderText(row$fam) debug
-  
-  autoInvalidate <- reactiveTimer(25000)
-  
+
   #poaži določene žvadi
   
   observeEvent(input$select,{
     ker <- input$select
     data2    <<- data[data$kdo %in% ker,]
-    autoInvalidate()
+    
   
     #output$stat <- renderTable(data2)
     })
@@ -72,6 +70,10 @@ server <- function(input, output, session) {
                       updateTextInput(session,"captionF",value = "")
                       updateTextInput(session,"captionS",value = "")
                       updateTextInput(session,"captionI",value = "")
+                      
+                      output$valueI <- renderText({NULL})
+                      output$valueS <- renderText({NULL})
+                      output$valueF <- renderText({NULL})
 
                           
           }else{
@@ -106,6 +108,13 @@ server <- function(input, output, session) {
   },deleteFile = FALSE)
   
   output$navodila <- renderText("Navodila: pisi vse z malimi, ne pisi sumnikov, pa nebi smelo bit komplikacij")
+  
+  #keep alive
+  
+  output$keepAlive <- renderText({
+    req(input$count)
+    paste("keep alive ", input$count)
+  })
 
 
   
