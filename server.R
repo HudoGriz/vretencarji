@@ -1,9 +1,6 @@
 library(readxl)
 library(png)
 library(pracma)
-
-  
-  
   
 server <- function(input, output, session) {
   data <- read_excel("Tabela/data.xlsx")
